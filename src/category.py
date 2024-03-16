@@ -11,7 +11,7 @@ class Category:
     def __init__(self, name, description, goods):
         self.name = name
         self.description = description
-        delf.goods = goods
+        self.goods = goods
 
         Category.count_categories += 1
 
