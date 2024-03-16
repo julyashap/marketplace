@@ -12,5 +12,6 @@ class Category:
         self.name = name
         self.description = description
         delf.goods = goods
-        count_categories += 1
+
+        Category.count_categories += 1
 
