@@ -13,4 +13,6 @@ class Product:
         self.description = description
         self.cost = cost
         self.count_in_stock = count_in_stock
-        count_products += 1
+
+        Product.count_products += 1
+
