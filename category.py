@@ -5,5 +5,12 @@ class Category:
     description: str
     goods: list
 
-    def __init__(self):
-        pass
+    count_categories = 0
+    count_unique_products = 0
+
+    def __init__(self, name, description, goods):
+        self.name = name
+        self.description = description
+        delf.goods = goods
+        count_categories += 1
+
