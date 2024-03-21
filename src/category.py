@@ -15,13 +15,19 @@ class Category:
         Category.count_unique_products = len(set(self.__goods))
 
     @property
+    def goods(self):
+        """Возвращает список объектов класса Product"""
+
+        return self.__goods
+
+    @property
     def get_goods(self):
         """Возвращает список объектов класса Product в формате: Продукт, 80 руб. Остаток: 15 шт."""
 
         printing_goods = ""
 
         for good in self.__goods:
-            printing_goods += str(good)
+            printing_goods += str(good) + "\n"
 
         return printing_goods
 
