@@ -41,3 +41,8 @@ class Product:
 
         else:
             self.__cost = new_cost
+
+    def __str__(self):
+        """Возвращает объект класса Product в формате: Продукт, 80 руб. Остаток: 15 шт."""
+
+        return f"{self.name.title()}, {self.get_cost} руб. Остаток: {self.count_in_stock} шт."
