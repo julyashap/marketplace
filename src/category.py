@@ -40,7 +40,12 @@ class Category:
     def __len__(self):
         """Возвращает длину списка объектов класса Product"""
 
-        return len(self.__goods)
+        count_products = 0
+
+        for good in self.__goods:
+            count_products += good.count_in_stock
+
+        return count_products
 
     def __str__(self):
         """Возвращает объект класса Category в формате: Название категории, количество продуктов: 200 шт."""
