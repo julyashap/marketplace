@@ -46,3 +46,9 @@ class Product:
         """Возвращает объект класса Product в формате: Продукт, 80 руб. Остаток: 15 шт."""
 
         return f"{self.name.title()}, {self.get_cost} руб. Остаток: {self.count_in_stock} шт."
+
+    def __add__(self, other):
+        """Возвращает сложение двух объектов класса Product в виде сложения их стоимости,
+        умноженной на количество на складе"""
+
+        return self.get_cost * self.count_in_stock + other.get_cost * other.count_in_stock
