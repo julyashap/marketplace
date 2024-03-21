@@ -45,4 +45,4 @@ class Category:
     def __str__(self):
         """Возвращает объект класса Category в формате: Название категории, количество продуктов: 200 шт."""
 
-        return f"{self.name.title()}, количество продуктов: {len(self)}"
+        return f"{self.name.title()}, количество продуктов: {len(self)} шт."
