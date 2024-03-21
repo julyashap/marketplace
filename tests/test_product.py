@@ -28,7 +28,7 @@ def test_init(product_exmpl):
     assert product_exmpl.description == "Полезный фрукт"
     assert product_exmpl.count_in_stock == 53
 
-    assert Product.count_products == 18
+    assert Product.count_products == 22
 
 
 def test_create_product(product_exmpl, product_dict):
