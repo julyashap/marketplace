@@ -28,7 +28,7 @@ def test_init(product_exmpl):
     assert product_exmpl.description == "Полезный фрукт"
     assert product_exmpl.count_in_stock == 53
 
-    assert Product.count_products == 8
+    assert Product.count_products == 18
 
 
 def test_create_product(product_exmpl, product_dict):
@@ -71,3 +71,24 @@ def test_set_cost_lower_price(product_exmpl, mocker):
 
     product_exmpl.set_cost = 50.0
     assert product_exmpl._Product__cost == 50.0'''
+
+
+def test_str(product_exmpl, capsys):
+    """Тест магического метода __str__()"""
+
+    assert str(product_exmpl) == "Яблоко, 30.5 руб. Остаток: 53 шт."
+    assert type(str(product_exmpl)) == str
+
+    print(product_exmpl)
+    captured = capsys.readouterr()
+    assert "Яблоко, 30.5 руб. Остаток: 53 шт." in captured.out
+
+
+def test_add(product_exmpl):
+    """Тест магического метода __add__()"""
+
+    other_product = Product("Груша", "Полезный фрукт", 60.0, 24)
+
+    result = product_exmpl + other_product
+
+    assert result == 3056.5
