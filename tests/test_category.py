@@ -31,3 +31,26 @@ def test_set_goods(category_exmpl):
     category_exmpl.set_goods = Product("Мороженое", "Лакомство для всех", 54.99, 36)
     assert category_exmpl.get_goods == "Яблоко, 30.5 руб. Остаток: 53 шт.\nПельмени, 214.99 руб. Остаток: 152 шт.\n" \
                                        "Мороженое, 54.99 руб. Остаток: 36 шт.\n"
+
+
+def test_goods(category_exmpl):
+    """Тест метода goods()"""
+
+    assert category_exmpl.goods == category_exmpl._Category__goods
+
+
+def test_len(category_exmpl):
+    """Тест магического метода __len__()"""
+
+    assert len(category_exmpl) == 2
+
+
+def test_str(category_exmpl, capsys):
+    """Тест магического метода __str__()"""
+
+    assert str(category_exmpl) == "Еда, количество продуктов: 2 шт."
+    assert type(str(category_exmpl)) == str
+
+    print(category_exmpl)
+    captured = capsys.readouterr()
+    assert "Еда, количество продуктов: 2 шт." in captured.out
