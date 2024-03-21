@@ -42,15 +42,15 @@ def test_goods(category_exmpl):
 def test_len(category_exmpl):
     """Тест магического метода __len__()"""
 
-    assert len(category_exmpl) == 2
+    assert len(category_exmpl) == 205
 
 
 def test_str(category_exmpl, capsys):
     """Тест магического метода __str__()"""
 
-    assert str(category_exmpl) == "Еда, количество продуктов: 2 шт."
+    assert str(category_exmpl) == "Еда, количество продуктов: 205 шт."
     assert type(str(category_exmpl)) == str
 
     print(category_exmpl)
     captured = capsys.readouterr()
-    assert "Еда, количество продуктов: 2 шт." in captured.out
+    assert "Еда, количество продуктов: 205 шт." in captured.out
