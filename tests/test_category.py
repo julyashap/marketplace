@@ -6,6 +6,8 @@ from src.product import Product
 def category_exmpl():
     """Тестовый экземпляр класса Category"""
 
+    Product.count_products = 0
+
     return Category("Еда", "Для утоления голода", [Product("Яблоко", "Полезный фрукт", 30.5, 53),
                                                    Product("Пельмени", "Вкусный и сытный обед", 214.99, 152)])
 
