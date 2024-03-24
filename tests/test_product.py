@@ -6,6 +6,8 @@ from unittest.mock import patch
 def product_exmpl():
     """Тестовый экземпляр класса Product"""
 
+    Product.count_products = 0
+
     return Product("Яблоко", "Полезный фрукт", 30.5, 53)
 
 
@@ -28,7 +30,7 @@ def test_init(product_exmpl):
     assert product_exmpl.description == "Полезный фрукт"
     assert product_exmpl.count_in_stock == 53
 
-    assert Product.count_products == 22
+    assert Product.count_products == 1
 
 
 def test_create_product(product_exmpl, product_dict):
