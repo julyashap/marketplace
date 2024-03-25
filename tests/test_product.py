@@ -1,10 +1,12 @@
 import pytest
 from src.product import Product
-from unittest.mock import patch
+from src.smartphone import Smartphone
 
 @pytest.fixture
 def product_exmpl():
     """Тестовый экземпляр класса Product"""
+
+    Product.count_products = 0
 
     return Product("Яблоко", "Полезный фрукт", 30.5, 53)
 
@@ -28,7 +30,7 @@ def test_init(product_exmpl):
     assert product_exmpl.description == "Полезный фрукт"
     assert product_exmpl.count_in_stock == 53
 
-    assert Product.count_products == 22
+    assert Product.count_products == 1
 
 
 def test_create_product(product_exmpl, product_dict):
@@ -55,7 +57,9 @@ def test_set_cost(product_exmpl, capsys):
     assert product_exmpl.get_cost == 200.0
 
 
-'''def test_set_cost_no_change(product_exmpl, mocker):
+'''MONKEYPATCH
+pytest -s
+def test_set_cost_no_change(product_exmpl, mocker):
     """Тест метода set_cost() для случая отказа снизить цену"""
 
     mocker.patch('builtins.input', return_value='n')
@@ -88,7 +92,11 @@ def test_add(product_exmpl):
     """Тест магического метода __add__()"""
 
     other_product = Product("Груша", "Полезный фрукт", 60.0, 24)
+    other_smartphone = Smartphone('Samsung Galaxy C23 Ultra', "256GB, Серый цвет, 200MP камера",
+                                  180000.0, 5, 125, 'Samsung', 256, 'Grey')
 
     result = product_exmpl + other_product
-
     assert result == 3056.5
+
+    with pytest.raises(TypeError):
+        result_with_smartphone = product_exmpl + other_smartphone

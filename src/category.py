@@ -33,19 +33,16 @@ class Category:
 
     @get_goods.setter
     def set_goods(self, product: Product):
-        """Добавляет объект класса Product в список товаров"""
+        """Добавляет объект класса Product и его наследников в список товаров"""
 
+        if not isinstance(product, Product):
+            raise TypeError("Невозможно добавить этот тип!")
         self.__goods.append(product)
 
     def __len__(self):
         """Возвращает длину списка объектов класса Product"""
 
-        count_products = 0
-
-        for good in self.__goods:
-            count_products += good.count_in_stock
-
-        return count_products
+        return sum(good.count_in_stock for good in self.__goods)
 
     def __str__(self):
         """Возвращает объект класса Category в формате: Название категории, количество продуктов: 200 шт."""
