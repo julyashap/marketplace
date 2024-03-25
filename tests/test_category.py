@@ -34,6 +34,8 @@ def test_set_goods(category_exmpl):
     assert category_exmpl.get_goods == "Яблоко, 30.5 руб. Остаток: 53 шт.\nПельмени, 214.99 руб. Остаток: 152 шт.\n" \
                                        "Мороженое, 54.99 руб. Остаток: 36 шт.\n"
 
+    with pytest.raises(TypeError):
+        category_exmpl.set_goods = 0
 
 def test_goods(category_exmpl):
     """Тест метода goods()"""
