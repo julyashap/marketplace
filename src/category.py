@@ -33,7 +33,7 @@ class Category:
 
     @get_goods.setter
     def set_goods(self, product: Product):
-        """Добавляет объект класса Product в список товаров"""
+        """Добавляет объект класса Product и его наследников в список товаров"""
 
         if not isinstance(product, Product):
             raise TypeError("Невозможно добавить этот тип!")
