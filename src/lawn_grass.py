@@ -1,8 +1,11 @@
 from src.product import Product
 
 class LawnGrass(Product):
+    """Класс, определяющий газонную траву"""
+
     def __init__(self, name: str, description: str, cost: float, count_in_stock: int,
                  country: str, growing_period: float, color: str):
+        """Конструктор класса LawnGrass"""
 
         super().__init__(name, description, cost, count_in_stock)
 
