@@ -57,7 +57,9 @@ def test_set_cost(product_exmpl, capsys):
     assert product_exmpl.get_cost == 200.0
 
 
-'''def test_set_cost_no_change(product_exmpl, mocker):
+'''MONKEYPATCH
+pytest -s
+def test_set_cost_no_change(product_exmpl, mocker):
     """Тест метода set_cost() для случая отказа снизить цену"""
 
     mocker.patch('builtins.input', return_value='n')
