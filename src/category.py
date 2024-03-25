@@ -35,6 +35,8 @@ class Category:
     def set_goods(self, product: Product):
         """Добавляет объект класса Product в список товаров"""
 
+        if not isinstance(product, Product):
+            raise TypeError("Невозможно добавить этот тип!")
         self.__goods.append(product)
 
     def __len__(self):
