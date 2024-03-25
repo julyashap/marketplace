@@ -1,8 +1,11 @@
 from src.product import Product
 
 class Smartphone(Product):
+    """Класс, определяющий телефон"""
+
     def __init__(self, name: str, description: str, cost: float, count_in_stock: int,
-                 capacity: int, model: str, memory: float, color: str):
+                 capacity: int, model: str, memory: int, color: str):
+        """Конструктор класса Smartphone"""
 
         super().__init__(name, description, cost, count_in_stock)
 
