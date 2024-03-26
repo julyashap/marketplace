@@ -48,7 +48,9 @@ class Product:
         return f"{self.name.title()}, {self.__cost} руб. Остаток: {self.count_in_stock} шт."
 
     def __add__(self, other):
-        """Возвращает сложение двух объектов класса Product в виде сложения их стоимости,
+        """Возвращает сложение двух объектов класса Product и его наследников в виде сложения их стоимости,
         умноженной на количество на складе"""
 
-        return self.__cost * self.count_in_stock + other.__cost * other.count_in_stock
+        if type(other) == self.__class__:
+            return self.__cost * self.count_in_stock + other.__cost * other.count_in_stock
+        raise TypeError("Невозможно сложить эти типы!")
