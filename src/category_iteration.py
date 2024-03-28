@@ -1,11 +1,14 @@
 from src.category import Category
 from src.product import Product
+from src.mixin_repr import MixinRepr
 
-class CategoryIteration:
+class CategoryIteration(MixinRepr):
     """Класс для итерации по атрибуту __goods класса Category"""
 
     def __init__(self, category: Category):
         self.category = category
+
+        super().__init__()
 
     def __iter__(self):
         self.counter = -1

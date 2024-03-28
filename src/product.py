@@ -1,15 +1,22 @@
-class Product:
+from src.product_abstract import ProductAbstract
+from src.mixin_repr import MixinRepr
+
+class Product(MixinRepr, ProductAbstract):
     """Класс продукта на маркетплейсе"""
 
     count_products = 0
 
     def __init__(self, name: str, description: str, cost: float, count_in_stock: int):
+        """Конструктор класса Product"""
+
         self.name = name
         self.description = description
         self.__cost = cost
         self.count_in_stock = count_in_stock
 
         Product.count_products += 1
+
+        super().__init__()
 
     @classmethod
     def create_product(cls, products_dict: dict):
@@ -25,7 +32,7 @@ class Product:
         return self.__cost
 
     @get_cost.setter
-    def set_cost(self, new_cost):
+    def set_cost(self, new_cost: float):
         """Устанавливает значение приватного атрибута __cost с валидацией введенных данных"""
 
         if new_cost <= 0:
