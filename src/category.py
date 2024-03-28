@@ -1,6 +1,7 @@
 from src.product import Product
+from src.mixin_repr import MixinRepr
 
-class Category:
+class Category(MixinRepr):
     """Класс категории продуктов на маркетплейсе"""
 
     count_categories = 0
@@ -13,6 +14,8 @@ class Category:
 
         Category.count_categories += 1
         Category.count_unique_products = len(set(self.__goods))
+
+        super().__init__()
 
     @property
     def goods(self):
