@@ -8,8 +8,8 @@ def category_exmpl():
 
     Product.count_products = 0
 
-    return Category("Еда", "Для утоления голода", [Product("Яблоко", "Полезный фрукт", 30.5, 53),
-                                                   Product("Пельмени", "Вкусный и сытный обед", 214.99, 152)])
+    return Category('Еда', 'Для утоления голода', [Product('Яблоко', 'Полезный фрукт', 30.5, 53),
+                                                   Product('Пельмени', 'Вкусный и сытный обед', 214.99, 152)])
 
 def test_init(category_exmpl):
     """Тест конструктора класса Category"""

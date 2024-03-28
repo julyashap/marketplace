@@ -8,7 +8,7 @@ def product_exmpl():
 
     Product.count_products = 0
 
-    return Product("Яблоко", "Полезный фрукт", 30.5, 53)
+    return Product('Яблоко', 'Полезный фрукт', 30.5, 53)
 
 
 @pytest.fixture
