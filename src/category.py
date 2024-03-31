@@ -1,7 +1,8 @@
 from src.product import Product
 from src.mixin_repr import MixinRepr
+from src.category_order import CategoryOrder
 
-class Category(MixinRepr):
+class Category(MixinRepr, CategoryOrder):
     """Класс категории продуктов на маркетплейсе"""
 
     count_categories = 0
