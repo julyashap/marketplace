@@ -3,6 +3,7 @@ from src.category_iteration import CategoryIteration
 from src.category import Category
 from src.product import Product
 
+
 @pytest.fixture
 def category_iteration_exmpl():
     """Тестовый экземпляр класса Category"""
