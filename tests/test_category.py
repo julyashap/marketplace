@@ -2,6 +2,7 @@ import pytest
 from src.category import Category
 from src.product import Product
 
+
 @pytest.fixture
 def category_exmpl():
     """Тестовый экземпляр класса Category"""
@@ -10,6 +11,7 @@ def category_exmpl():
 
     return Category('Еда', 'Для утоления голода', [Product('Яблоко', 'Полезный фрукт', 30.5, 53),
                                                    Product('Пельмени', 'Вкусный и сытный обед', 214.99, 152)])
+
 
 def test_init(category_exmpl):
     """Тест конструктора класса Category"""
@@ -36,6 +38,7 @@ def test_set_goods(category_exmpl):
 
     with pytest.raises(TypeError):
         category_exmpl.set_goods = 0
+
 
 def test_goods(category_exmpl):
     """Тест метода goods()"""

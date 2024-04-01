@@ -1,6 +1,7 @@
 from src.product_abstract import ProductAbstract
 from src.mixin_repr import MixinRepr
 
+
 class Product(MixinRepr, ProductAbstract):
     """Класс продукта на маркетплейсе"""
 

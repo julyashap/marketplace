@@ -1,6 +1,7 @@
 import pytest
 from src.category_order import CategoryOrder
 
+
 def test_category_order():
     """Тест на проверку ошибки при создании экземпляра класса CategoryOrder"""
 

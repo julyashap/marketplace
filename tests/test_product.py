@@ -2,6 +2,7 @@ import pytest
 from src.product import Product
 from src.smartphone import Smartphone
 
+
 @pytest.fixture
 def product_exmpl():
     """Тестовый экземпляр класса Product"""
@@ -33,7 +34,7 @@ def test_init(product_exmpl):
     assert Product.count_products == 1
 
 
-def test_create_product(product_exmpl, product_dict):
+def test_create_product(product_dict):
     """Тест метода create_product()"""
 
     assert type(Product.create_product(product_dict)) == Product
@@ -99,4 +100,4 @@ def test_add(product_exmpl):
     assert result == 3056.5
 
     with pytest.raises(TypeError):
-        result_with_smartphone = product_exmpl + other_smartphone
+        product_exmpl + other_smartphone

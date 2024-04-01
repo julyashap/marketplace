@@ -41,6 +41,7 @@ def test_init(lawn_grass_exmpl):
 def test_create_product(lawn_grass_dict):
     assert type(LawnGrass.create_product(lawn_grass_dict)) == LawnGrass
 
+
 def test_repr(lawn_grass_exmpl):
     assert repr(lawn_grass_exmpl) == "LawnGrass('Трава зеленая', 'Зеленая трава для футбола', " \
                                      "150000.0, 2, 'Россия', 120.5, 'Зеленый')"

@@ -2,6 +2,7 @@ from src.product import Product
 from src.mixin_repr import MixinRepr
 from src.category_order import CategoryOrder
 
+
 class Order(MixinRepr, CategoryOrder):
     def __init__(self, product: Product, count_product: int):
         self.product = product
