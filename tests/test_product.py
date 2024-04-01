@@ -1,6 +1,7 @@
 import pytest
 from src.product import Product
 from src.smartphone import Smartphone
+from src.zero_count_error import ZeroCountError
 
 
 @pytest.fixture
@@ -33,11 +34,22 @@ def test_init(product_exmpl):
 
     assert Product.count_products == 1
 
+    with pytest.raises(ZeroCountError, match="Количество продукта не может быть нулевым!"):
+        Product('Яблоко', 'Полезный фрукт', 30.5, 0)
+
 
 def test_create_product(product_dict):
     """Тест метода create_product()"""
 
     assert type(Product.create_product(product_dict)) == Product
+
+    with pytest.raises(ZeroCountError, match="Количество продукта не может быть нулевым!"):
+        Product.create_product({
+        "name": "Samsung Galaxy C23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 0
+        })
 
 
 def test_get_cost(product_exmpl):
