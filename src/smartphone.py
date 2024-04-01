@@ -1,5 +1,6 @@
 from src.product import Product
 
+
 class Smartphone(Product):
     """Класс, определяющий телефон"""
 

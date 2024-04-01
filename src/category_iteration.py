@@ -2,6 +2,7 @@ from src.category import Category
 from src.product import Product
 from src.mixin_repr import MixinRepr
 
+
 class CategoryIteration(MixinRepr):
     """Класс для итерации по атрибуту __goods класса Category"""
 

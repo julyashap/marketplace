@@ -1,6 +1,8 @@
 import pytest
 from src.category import Category
 from src.product import Product
+from src.zero_count_error import ZeroCountError
+
 
 @pytest.fixture
 def category_exmpl():
@@ -10,6 +12,7 @@ def category_exmpl():
 
     return Category('Еда', 'Для утоления голода', [Product('Яблоко', 'Полезный фрукт', 30.5, 53),
                                                    Product('Пельмени', 'Вкусный и сытный обед', 214.99, 152)])
+
 
 def test_init(category_exmpl):
     """Тест конструктора класса Category"""
@@ -34,8 +37,12 @@ def test_set_goods(category_exmpl):
     assert category_exmpl.get_goods == "Яблоко, 30.5 руб. Остаток: 53 шт.\nПельмени, 214.99 руб. Остаток: 152 шт.\n" \
                                        "Мороженое, 54.99 руб. Остаток: 36 шт.\n"
 
-    with pytest.raises(TypeError):
+    with pytest.raises(TypeError, match="Невозможно добавить этот тип!"):
         category_exmpl.set_goods = 0
+
+    with pytest.raises(ZeroCountError, match="Количество продукта не может быть нулевым!"):
+        category_exmpl.set_goods = Product('Яблоко', 'Полезный фрукт', 30.5, 0)
+
 
 def test_goods(category_exmpl):
     """Тест метода goods()"""
@@ -58,3 +65,10 @@ def test_str(category_exmpl, capsys):
     print(category_exmpl)
     captured = capsys.readouterr()
     assert "Еда, количество продуктов: 205 шт." in captured.out
+
+
+def test_avg_cost_goods(category_exmpl):
+    assert category_exmpl.avg_cost_goods() == 122.745
+
+    category = Category('Еда', 'Для утоления голода', [])
+    assert category.avg_cost_goods() == 0

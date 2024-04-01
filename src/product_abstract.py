@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class ProductAbstract(ABC):
     """Абстрактный класс для продукта"""
 
