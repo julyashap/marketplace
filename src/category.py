@@ -1,6 +1,7 @@
 from src.product import Product
 from src.mixin_repr import MixinRepr
 from src.category_order import CategoryOrder
+from src.zero_count_error import ZeroCountError
 
 
 class Category(MixinRepr, CategoryOrder):
@@ -42,7 +43,15 @@ class Category(MixinRepr, CategoryOrder):
 
         if not isinstance(product, Product):
             raise TypeError("Невозможно добавить этот тип!")
-        self.__goods.append(product)
+
+        try:
+            self.__goods.append(product)
+        except ZeroCountError as e:
+            print(e)
+        else:
+            print("Товар успешно добавлен!")
+        finally:
+            print("Операция добавления товара завершена!")
 
     def __len__(self):
         """Возвращает длину списка объектов класса Product"""
@@ -53,3 +62,13 @@ class Category(MixinRepr, CategoryOrder):
         """Возвращает объект класса Category в формате: Название категории, количество продуктов: 200 шт."""
 
         return f"{self.name.title()}, количество продуктов: {len(self)} шт."
+
+    def avg_cost_goods(self):
+        """Возвращает средний ценник по всем товарам в списке __goods"""
+
+        try:
+            avg_cost = sum(good.get_cost for good in self.__goods) / len(self.__goods)
+        except ZeroDivisionError:
+            avg_cost = 0
+        finally:
+            return avg_cost
