@@ -1,5 +1,6 @@
 from src.product_abstract import ProductAbstract
 from src.mixin_repr import MixinRepr
+from src.zero_count_error import ZeroCountError
 
 
 class Product(MixinRepr, ProductAbstract):
@@ -15,7 +16,7 @@ class Product(MixinRepr, ProductAbstract):
         self.__cost = cost
 
         if count_in_stock == 0:
-            raise ValueError("Количество товара не может быть нулевым!")
+            raise ZeroCountError
         self.count_in_stock = count_in_stock
 
         Product.count_products += 1
@@ -27,7 +28,7 @@ class Product(MixinRepr, ProductAbstract):
         """Возвращает объект класса Product из словаря"""
 
         if products_dict['quantity'] == 0:
-            raise ValueError("Количество товара не может быть нулевым!")
+            raise ZeroCountError
 
         return cls(products_dict['name'], products_dict['description'],
                    products_dict['price'], products_dict['quantity'])
