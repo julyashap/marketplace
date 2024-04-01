@@ -13,6 +13,9 @@ class Product(MixinRepr, ProductAbstract):
         self.name = name
         self.description = description
         self.__cost = cost
+
+        if count_in_stock == 0:
+            raise ValueError("Количество товара не может быть нулевым!")
         self.count_in_stock = count_in_stock
 
         Product.count_products += 1
@@ -22,6 +25,9 @@ class Product(MixinRepr, ProductAbstract):
     @classmethod
     def create_product(cls, products_dict: dict):
         """Возвращает объект класса Product из словаря"""
+
+        if products_dict['quantity'] == 0:
+            raise ValueError("Количество товара не может быть нулевым!")
 
         return cls(products_dict['name'], products_dict['description'],
                    products_dict['price'], products_dict['quantity'])
