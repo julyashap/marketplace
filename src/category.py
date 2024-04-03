@@ -44,6 +44,9 @@ class Category(MixinRepr, CategoryOrder):
         if not isinstance(product, Product):
             raise TypeError("Невозможно добавить этот тип!")
 
+        if product.count_in_stock == 0:
+            raise ZeroCountError
+
         try:
             self.__goods.append(product)
         except ZeroCountError as e:
