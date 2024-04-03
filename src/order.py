@@ -22,6 +22,9 @@ class Order(MixinRepr, CategoryOrder):
         if not isinstance(new_product, Product):
             raise TypeError("Невозможно добавить этот тип!")
 
+        if new_product.count_in_stock == 0:
+            raise ZeroCountError
+
         try:
             self.product = new_product
         except ZeroCountError as e:
